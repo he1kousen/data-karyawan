@@ -952,7 +952,57 @@
           modal.hide();
       });
   </script>
-  
+  <script>
+    // Script untuk menangani Edit Data Karyawan
+document.querySelectorAll('#employeeTable .btn-info').forEach((editButton) => {
+  editButton.addEventListener('click', () => {
+      const row = editButton.closest('tr');
+      const cells = row.querySelectorAll('td');
+
+      // Isi form modal dengan data dari baris yang dipilih
+      document.getElementById('editEmployeeCode').value = cells[1].innerText;
+      document.getElementById('editEmployeeName').value = cells[2].innerText;
+      document.getElementById('editEmployeeEmail').value = cells[3].innerText;
+      document.getElementById('editEmployeeAddress').value = cells[4].innerText;
+      document.getElementById('editEmployeePosition').value = cells[5].innerText;
+
+      // Menambahkan event listener pada tombol Simpan Perubahan
+      const saveButton = document.querySelector('#editEmployeeModal .btn-primary');
+      saveButton.onclick = (event) => {
+          event.preventDefault(); // Mencegah submit form
+
+          // Ambil nilai dari input form
+          cells[1].innerText = document.getElementById('editEmployeeCode').value;
+          cells[2].innerText = document.getElementById('editEmployeeName').value;
+          cells[3].innerText = document.getElementById('editEmployeeEmail').value;
+          cells[4].innerText = document.getElementById('editEmployeeAddress').value;
+          cells[5].innerText = document.getElementById('editEmployeePosition').value;
+
+          // Tutup modal setelah menyimpan
+          const modal = bootstrap.Modal.getInstance(document.getElementById('editEmployeeModal'));
+          modal.hide();
+      };
+  });
+});
+
+// Script untuk menangani Hapus Data Karyawan
+document.querySelectorAll('#employeeTable .btn-danger').forEach((deleteButton) => {
+  deleteButton.addEventListener('click', () => {
+      const row = deleteButton.closest('tr');
+
+      // Event listener untuk tombol Hapus dalam modal konfirmasi
+      document.querySelector('#deleteConfirmModal .btn-danger').onclick = () => {
+          row.remove(); // Hapus baris dari tabel
+
+          // Tutup modal konfirmasi delete
+          const modal = bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal'));
+          modal.hide();
+      };
+  });
+});
+
+</script>
+
       
     </script>
 </body>

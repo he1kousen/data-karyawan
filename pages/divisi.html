@@ -879,6 +879,121 @@
         }
       });
     </script>
+
+    <script>// Script untuk menangani Edit Data Divisi
+      document.querySelectorAll('#employeeTable .btn-info').forEach((editButton) => {
+          editButton.addEventListener('click', () => {
+              const row = editButton.closest('tr');
+              const cells = row.querySelectorAll('td');
+      
+              // Isi form modal dengan data dari baris yang dipilih
+              document.getElementById('editEmployeeCode').value = cells[1].innerText;
+              document.getElementById('editEmployeeName').value = cells[2].innerText;
+      
+              // Menambahkan event listener pada tombol Simpan Perubahan
+              const saveButton = document.querySelector('#editEmployeeModal .btn-primary');
+              saveButton.onclick = (event) => {
+                  event.preventDefault(); // Mencegah submit form
+      
+                  // Ambil nilai dari input form
+                  cells[1].innerText = document.getElementById('editEmployeeCode').value;
+                  cells[2].innerText = document.getElementById('editEmployeeName').value;
+      
+                  // Tutup modal setelah menyimpan
+                  const modal = bootstrap.Modal.getInstance(document.getElementById('editEmployeeModal'));
+                  modal.hide();
+              };
+          });
+      });
+      
+      // Script untuk menangani Hapus Data Divisi
+      document.querySelectorAll('#employeeTable .btn-danger').forEach((deleteButton) => {
+          deleteButton.addEventListener('click', () => {
+              const row = deleteButton.closest('tr');
+      
+              // Event listener untuk tombol Hapus dalam modal konfirmasi
+              document.querySelector('#deleteConfirmModal .btn-danger').onclick = () => {
+                  row.remove(); // Hapus baris dari tabel
+      
+                  // Tutup modal konfirmasi delete
+                  const modal = bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal'));
+                  modal.hide();
+              };
+          });
+      });
+      </script>
     
+      <script>
+  // Menyimpan data baru
+  document.getElementById("saveJobButton").addEventListener("click", function (event) {
+    event.preventDefault(); // Mencegah form submit default
+
+    // Ambil nilai dari input form
+    const jobCode = document.getElementById("jobCode").value;
+    const jobName = document.getElementById("jobName").value;
+
+    // Ambil tabel dan buat baris baru
+    const table = document.getElementById("jobTable").getElementsByTagName("tbody")[0];
+    const newRow = table.insertRow();
+
+    // Tentukan nomor urut
+    const rowCount = table.rows.length;
+
+    // Tambahkan sel ke baris baru
+    const cellNumber = newRow.insertCell(0);
+    const cellCode = newRow.insertCell(1);
+    const cellJob = newRow.insertCell(2);
+    const cellActions = newRow.insertCell(3);
+
+    // Isi sel dengan data input
+    cellNumber.innerHTML = rowCount;
+    cellCode.innerHTML = jobCode;
+    cellJob.innerHTML = jobName;
+    cellActions.innerHTML = `
+      <button class="btn btn-sm btn-info text-white" title="Edit" onclick="editRow(this)">
+        <i class="material-symbols-rounded">edit</i>
+      </button>
+      <button class="btn btn-sm btn-danger text-white" title="Delete" onclick="deleteRow(this)">
+        <i class="material-symbols-rounded">delete</i>
+      </button>
+    `;
+
+    // Reset form
+    document.getElementById("jobCode").value = '';
+    document.getElementById("jobName").value = '';
+    
+    // Tutup modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById("addJobModal"));
+    modal.hide();
+  });
+
+  // Fungsi Edit Row
+  function editRow(button) {
+    const row = button.parentElement.parentElement;
+    const cells = row.getElementsByTagName("td");
+
+    // Isi form edit dengan data dari baris yang dipilih
+    document.getElementById("editEmployeeCode").value = cells[1].innerText;
+    document.getElementById("editEmployeeName").value = cells[2].innerText;
+
+    // Simpan perubahan setelah edit
+    document.querySelector("#editEmployeeModal .btn-primary").onclick = function (event) {
+      event.preventDefault();
+      cells[1].innerText = document.getElementById("editEmployeeCode").value;
+      cells[2].innerText = document.getElementById("editEmployeeName").value;
+
+      // Tutup modal edit
+      const modal = bootstrap.Modal.getInstance(document.getElementById("editEmployeeModal"));
+      modal.hide();
+    };
+  }
+
+  // Fungsi Delete Row
+  function deleteRow(button) {
+    const row = button.parentElement.parentElement;
+    row.remove();
+  }
+</script>
+
 </body>
 </html>
