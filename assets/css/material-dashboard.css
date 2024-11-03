@@ -5801,6 +5801,14 @@ fieldset:disabled .btn {
   ;
 }
 
+.divider {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+
 .breadcrumb-item.active {
   color: var(--bs-breadcrumb-item-active-color);
 }
@@ -29018,6 +29026,9 @@ pre[class*=language-] {
 .token.namespace {
   opacity: 0.7;
 }
+
+
+
 
 .token.property,
 .token.tag,

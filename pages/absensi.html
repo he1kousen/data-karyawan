@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <title>Data Absensi</title>
+    <title>SanDashboard - Absensi</title>
     <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
   <!-- Nucleo Icons -->
@@ -100,6 +100,10 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        <hr class="divider">
+        <p style="color: #474747; font-size: 14px; line-height: 1.5; margin-left: 20px; margin-top: 15px; margin-bottom: 5px; font-weight: bold; font-family: 'Roboto', sans-serif;">
+          Menu Karyawan
+        </p>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/karyawan.html">
             <i class="material-symbols-rounded opacity-5">group</i>
@@ -118,6 +122,9 @@
             <span class="nav-link-text ms-1">Divisi</span>
           </a>
         </li>
+        <p style="color: #474747; font-size: 14px; line-height: 1.5; margin-left: 20px; margin-top: 15px; margin-bottom: 5px; font-weight: bold; font-family: 'Roboto', sans-serif;">
+          Menu Absensi
+        </p>
         <li class="nav-item">
           <a class="nav-link active bg-gradient-dark text-white" href="../pages/absensi.html">
             <i class="material-symbols-rounded opacity-5">how_to_reg</i>
@@ -880,6 +887,22 @@
         }
     });
     
+// Script untuk menangani Hapus Data Karyawan
+document.querySelectorAll('#employeeTable .btn-danger').forEach((deleteButton) => {
+  deleteButton.addEventListener('click', () => {
+      const row = deleteButton.closest('tr');
+
+      // Event listener untuk tombol Hapus dalam modal konfirmasi
+      document.querySelector('#deleteConfirmModal .btn-danger').onclick = () => {
+          row.remove(); // Hapus baris dari tabel
+
+          // Tutup modal konfirmasi delete
+          const modal = bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal'));
+          modal.hide();
+      };
+  });
+});
+
     </script>
     
 </body>

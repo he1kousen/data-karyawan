@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-      Dashboard
+      SanDashboard - Jabatan
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
@@ -19,71 +19,70 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
-  
     <style>/* Style untuk kontrol tabel */
-        .table-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .table-controls label {
-            font-weight: 500;
-            color: #6c757d;
-        }
-        
-        .table-controls select,
-        #searchInput {
-            padding: 5px 10px;
-            border-radius: 4px;
-            border: 1px solid #ced4da;
-            font-size: 14px;
-            color: #495057;
-            outline: none;
-        }
-        
-        #searchInput {
-            width: 200px;
-            transition: all 0.3s ease;
-        }
-        
-        .table-controls select:focus,
-        #searchInput:focus {
-            border-color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-        
-        /* Style untuk tabel agar rata tengah dan rapi */
-        .table {
-            width: 100%;
-            text-align: center;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-        
-        .table th,
-        .table td {
-            vertical-align: middle;
-            padding: 12px;
-            font-size: 14px;
-            color: #495057;
-        }
-        
-        .table th {
-            font-weight: bold;
-            background-color: #f8f9fa;
-        }
-        
-        .table td {
-            border-top: 1px solid #dee2e6;
-        }
-        
-        .table .btn {
-            padding: 5px 10px;
-            font-size: 12px;
-        }
-        </style>
+      .table-controls {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+      }
+      
+      .table-controls label {
+          font-weight: 500;
+          color: #6c757d;
+      }
+      
+      .table-controls select,
+      #searchInput {
+          padding: 5px 10px;
+          border-radius: 4px;
+          border: 1px solid #ced4da;
+          font-size: 14px;
+          color: #495057;
+          outline: none;
+      }
+      
+      #searchInput {
+          width: 200px;
+          transition: all 0.3s ease;
+      }
+      
+      .table-controls select:focus,
+      #searchInput:focus {
+          border-color: #80bdff;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+      
+      /* Style untuk tabel agar rata tengah dan rapi */
+      .table {
+          width: 100%;
+          text-align: center;
+          border-collapse: separate;
+          border-spacing: 0;
+      }
+      
+      .table th,
+      .table td {
+          vertical-align: middle;
+          padding: 12px;
+          font-size: 14px;
+          color: #495057;
+      }
+      
+      .table th {
+          font-weight: bold;
+          background-color: #f8f9fa;
+      }
+      
+      .table td {
+          border-top: 1px solid #dee2e6;
+      }
+      
+      .table .btn {
+          padding: 5px 10px;
+          font-size: 12px;
+      }
+      </style>
 </head>
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-white my-2" id="sidenav-main">
@@ -103,6 +102,10 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        <hr class="divider">
+        <p style="color: #474747; font-size: 14px; line-height: 1.5; margin-left: 20px; margin-top: 15px; margin-bottom: 5px; font-weight: bold; font-family: 'Roboto', sans-serif;">
+          Menu Karyawan
+        </p>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/karyawan.html">
             <i class="material-symbols-rounded opacity-5">group</i>
@@ -121,6 +124,9 @@
             <span class="nav-link-text ms-1">Divisi</span>
           </a>
         </li>
+        <p style="color: #474747; font-size: 14px; line-height: 1.5; margin-left: 20px; margin-top: 15px; margin-bottom: 5px; font-weight: bold; font-family: 'Roboto', sans-serif;">
+          Menu Absensi
+        </p>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/absensi.html">
             <i class="material-symbols-rounded opacity-5">how_to_reg</i>
@@ -270,7 +276,7 @@
             <div class="card">
                 <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                     <h6>Data Jabatan</h6>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addJobModal">Tambah Data</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">Tambah Data</button>
                 </div>
                 <div class="card-body px-4 pt-2">
                     <!-- Search dan Show Entries -->
@@ -291,34 +297,34 @@
                         </div>
                     </div>
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0" id="jobTable">
+                        <table class="table align-items-center mb-0" id="employeeTable">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>Nomor</th>
                                     <th>Kode Jabatan</th>
                                     <th>Jabatan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Contoh data karyawan -->
+                                <!-- Contoh data jabatan -->
                                 <tr>
-                                  <td>1</td>
-                                  <td>JAB001</td>
-                                  <td>Manager</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
+                                    <td>1</td>
+                                    <td>JAB001</td>
+                                    <td>Rektor</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                            <i class="material-symbols-rounded">edit</i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                            <i class="material-symbols-rounded">delete</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
                                   <td>2</td>
                                   <td>JAB002</td>
-                                  <td>Assistant Manager</td>
+                                  <td>Wakil Rektor</td>
                                   <td>
                                       <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
                                           <i class="material-symbols-rounded">edit</i>
@@ -329,111 +335,110 @@
                                   </td>
                               </tr>
                               <tr>
-                                  <td>3</td>
-                                  <td>JAB003</td>
-                                  <td>Supervisor</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>JAB004</td>
-                                  <td>HRD</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>5</td>
-                                  <td>JAB005</td>
-                                  <td>Finance</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>6</td>
-                                  <td>JAB006</td>
-                                  <td>Marketing</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>7</td>
-                                  <td>JAB007</td>
-                                  <td>Customer Service</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>8</td>
-                                  <td>JAB008</td>
-                                  <td>IT Support</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>9</td>
-                                  <td>JAB009</td>
-                                  <td>Admin</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>10</td>
-                                  <td>JAB010</td>
-                                  <td>Staff</td>
-                                  <td>
-                                      <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                                          <i class="material-symbols-rounded">edit</i>
-                                      </button>
-                                      <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                                          <i class="material-symbols-rounded">delete</i>
-                                      </button>
-                                  </td>
-                              </tr>
-                              
-
+                                <td>3</td>
+                                <td>JAB003</td>
+                                <td>Supervisor</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>JAB004</td>
+                                <td>HRD</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>JAB005</td>
+                                <td>Marketing</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>JAB006</td>
+                                <td>Finance</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>JAB007</td>
+                                <td>IT Support</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>JAB008</td>
+                                <td>Customer Service</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>JAB009</td>
+                                <td>Admin</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>JAB010</td>
+                                <td>Admin</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                                        <i class="material-symbols-rounded">edit</i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                                        <i class="material-symbols-rounded">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            
                                 <!-- Tambahkan baris karyawan lainnya sesuai kebutuhan -->
                             </tbody>
                         </table>
@@ -443,75 +448,73 @@
         </div>
 
        <!-- Modal Form Input Data -->
-<div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addJobModalLabel">Tambah Data Jabatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="employeeName" class="form-label">Kode Jabatan</label>
-                        <input type="text" class="form-control" id="jobCode" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="employeePosition" class="form-label">Nama Jabatan</label>
-                        <input type="text" class="form-control" id="jobName" required>
-                    </div>
-                    
-                    
-                    <button type="submit" class="btn btn-primary w-100" id="saveJobButton">Simpan</button>
-                </form>
-            </div>
-        </div>
-    </div>
+<div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="addEmployeeModalLabel">Tambah Data Jabatan</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                      <label for="employeeName" class="form-label">Nama Jabatan</label>
+                      <input type="text" class="form-control" id="employeeName" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="employeePosition" class="form-label">Kode Jabatan</label>
+                      <input type="text" class="form-control" id="employeePosition" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" id="saveEmployeeButton">Simpan</button>
+              </form>
+          </div>
+      </div>
+  </div>
 </div>
+
 <!-- Modal Edit Data Karyawan -->
 <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editEmployeeModalLabel">Edit Data Jabatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <!-- Form Edit Data Karyawan -->
-                    <div class="mb-3">
-                        <label for="editEmployeeCode" class="form-label">Kode Jabatan</label>
-                        <input type="text" class="form-control" id="editEmployeeCode" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editEmployeeName" class="form-label">Nama Jabatan</label>
-                        <input type="text" class="form-control" id="editEmployeeName" required>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
-                </form>
-            </div>
-        </div>
-    </div>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editEmployeeModalLabel">Edit Data Jabatan</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <!-- Form Edit Data Karyawan -->
+                  <div class="mb-3">
+                      <label for="editEmployeeCode" class="form-label">Kode Jabatan</label>
+                      <input type="text" class="form-control" id="editEmployeeCode" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="editEmployeeName" class="form-label">Nama Jabatan</label>
+                      <input type="text" class="form-control" id="editEmployeeName" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
+              </form>
+          </div>
+      </div>
+  </div>
 </div>
 
 <!-- Modal Konfirmasi Delete -->
 <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteConfirmModalLabel">Hapus Data Jabatan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah anda yakin ingin menghapus data ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger">Hapus</button>
-            </div>
-        </div>
-    </div>
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="deleteConfirmModalLabel">Hapus Data Karyawan</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p>Apakah anda yakin ingin menghapus data ini?</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              <button type="button" class="btn btn-danger">Hapus</button>
+          </div>
+      </div>
+  </div>
 </div>
 
     </main>
@@ -756,11 +759,16 @@
         },
       },
     });
+
+ 
+      
+  
+  
       
         // Pencarian Data
         document.getElementById('searchInput').addEventListener('keyup', function() {
             const searchTerm = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#jobTable tbody tr');
+            const rows = document.querySelectorAll('#employeeTable tbody tr');
 
             rows.forEach(row => {
                 const rowText = row.innerText.toLowerCase();
@@ -771,7 +779,7 @@
         // Menampilkan Jumlah Entries
         document.getElementById('entriesSelect').addEventListener('change', function() {
             const entries = parseInt(this.value);
-            const rows = document.querySelectorAll('#jobTable tbody tr');
+            const rows = document.querySelectorAll('#employeeTable tbody tr');
 
             rows.forEach((row, index) => {
                 row.style.display = index < entries ? '' : 'none';
@@ -797,30 +805,34 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
     <script>
-      document.getElementById("saveJobButton").addEventListener("click", function (event) {
-          event.preventDefault(); // Mencegah form submit default
-    
+      document.getElementById("saveEmployeeButton").addEventListener("click", function () {
           // Ambil nilai dari input form
-          const jobCode = document.getElementById("jobCode").value;
-          const jobName = document.getElementById("jobName").value;
-    
+          const employeeName = document.getElementById("employeeName").value
+          const employeePosition = document.getElementById("employeePosition").value;
+  
+          // Validasi untuk memastikan form terisi
+          if (!employeeName || !employeePosition) {
+              alert("Semua field harus diisi.");
+              return;
+          }
+  
           // Ambil tabel dan buat baris baru
-          const table = document.getElementById("jobTable").getElementsByTagName("tbody")[0];
+          const table = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
           const newRow = table.insertRow();
-    
+  
           // Tentukan nomor urut
           const rowCount = table.rows.length;
-    
+  
           // Tambahkan sel ke baris baru
           const cellNumber = newRow.insertCell(0);
           const cellCode = newRow.insertCell(1);
-          const cellJob = newRow.insertCell(2);
+          const cellName = newRow.insertCell(2);
           const cellActions = newRow.insertCell(3);
-    
+  
           // Isi sel dengan data input
           cellNumber.innerHTML = rowCount;
-          cellCode.innerHTML = jobCode;
-          cellJob.innerHTML = jobName;
+          cellCode.innerHTML = employeePosition;
+          cellName.innerHTML = employeeName;
           cellActions.innerHTML = `
               <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
                   <i class="material-symbols-rounded">edit</i>
@@ -829,18 +841,63 @@
                   <i class="material-symbols-rounded">delete</i>
               </button>
           `;
-    
-          // Kosongkan form setelah submit
-          document.getElementById("jobCode").value = "";
-          document.getElementById("jobName").value = "";
-    
+  
+          // Kosongkan form
+          document.getElementById("employeeName").value = "";
+          document.getElementById("employeePosition").value = "";
+ 
+  
           // Tutup modal setelah menyimpan
-          const modal = bootstrap.Modal.getInstance(document.getElementById("addJobModal"));
+          const modal = bootstrap.Modal.getInstance(document.getElementById("addEmployeeModal"));
           modal.hide();
       });
+  </script>
+  <script>
+    // Script untuk menangani Edit Data Karyawan
+document.querySelectorAll('#employeeTable .btn-info').forEach((editButton) => {
+  editButton.addEventListener('click', () => {
+      const row = editButton.closest('tr');
+      const cells = row.querySelectorAll('td');
+
+      // Isi form modal dengan data dari baris yang dipilih
+      document.getElementById('editEmployeeCode').value = cells[1].innerText;
+      document.getElementById('editEmployeeName').value = cells[2].innerText;
+
+      // Menambahkan event listener pada tombol Simpan Perubahan
+      const saveButton = document.querySelector('#editEmployeeModal .btn-primary');
+      saveButton.onclick = (event) => {
+          event.preventDefault(); // Mencegah submit form
+
+          // Ambil nilai dari input form
+          cells[1].innerText = document.getElementById('editEmployeeCode').value;
+          cells[2].innerText = document.getElementById('editEmployeeName').value;
+
+          // Tutup modal setelah menyimpan
+          const modal = bootstrap.Modal.getInstance(document.getElementById('editEmployeeModal'));
+          modal.hide();
+      };
+  });
+});
+
+// Script untuk menangani Hapus Data Karyawan
+document.querySelectorAll('#employeeTable .btn-danger').forEach((deleteButton) => {
+  deleteButton.addEventListener('click', () => {
+      const row = deleteButton.closest('tr');
+
+      // Event listener untuk tombol Hapus dalam modal konfirmasi
+      document.querySelector('#deleteConfirmModal .btn-danger').onclick = () => {
+          row.remove(); // Hapus baris dari tabel
+
+          // Tutup modal konfirmasi delete
+          const modal = bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal'));
+          modal.hide();
+      };
+  });
+});
+
+</script>
+
+      
     </script>
-   
-    
-  
 </body>
 </html>
