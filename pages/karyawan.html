@@ -26,6 +26,8 @@
           align-items: center;
           margin-bottom: 1rem;
       }
+
+
       
       .table-controls label {
           font-weight: 500;
@@ -82,6 +84,38 @@
           padding: 5px 10px;
           font-size: 12px;
       }
+
+      #employeeTable {
+        animation: fadeIn 1s forwards;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.3s forwards;
+      }
+      
+      .fade-out {
+        animation: fadeOut 0.3s forwards;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+      
+
       </style>
 </head>
 <body class="g-sidenav-show  bg-gray-100">
@@ -217,7 +251,7 @@
             <li class="nav-item d-flex align-items-center"> 
             </li>
             <li class="mt-1">
-              <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+              <a class="github-button" href="https://github.com/he1kousen/data-karyawan" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -378,7 +412,7 @@
                                   <td>Wis Casni'a</td>
                                   <td>wis@karyawan.com</td>
                                   <td>Jl. Cilebut No. 666</td>
-                                  <td>Pencabut Singkong</td>
+                                  <td>Wakil Rektor</td>
                                   <td>
                                       <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
                                           <i class="material-symbols-rounded">edit</i>
@@ -884,80 +918,112 @@
             });
         });
 
-        // Menampilkan jumlah awal berdasarkan dropdown
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('entriesSelect').dispatchEvent(new Event('change'));
-        });
-    </script>
-    <script>
-      var win = navigator.platform.indexOf('Win') > -1;
-      if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-          damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-      }
+      
+          document.addEventListener('DOMContentLoaded', () => {
+              const entriesSelect = document.getElementById('entriesSelect');
+              entriesSelect.addEventListener('change', updateEntries);
+              updateEntries(); // Panggil fungsi saat halaman pertama kali dimuat
+          });
+      
+          function updateEntries() {
+              const entries = parseInt(document.getElementById('entriesSelect').value);
+              const rows = document.querySelectorAll('#employeeTable tbody tr');
+              let rowCount = 0;
+      
+              rows.forEach((row) => {
+                  if (rowCount < entries) {
+                      row.style.display = ''; // Tampilkan baris
+                      rowCount++;
+                  } else {
+                      row.style.display = 'none'; // Sembunyikan baris lainnya
+                  }
+              });
+          }
+      
+      
+
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.min.js?v=3.2.0"></script>
+
+
+
+    <!-- Menambah Data -->
     <script>
-      document.getElementById("saveEmployeeButton").addEventListener("click", function () {
-          // Ambil nilai dari input form
-          const employeeName = document.getElementById("employeeName").value;
-          const employeePosition = document.getElementById("employeePosition").value;
-          const employeeDivision = document.getElementById("employeeDivision").value;
-          const joinDate = document.getElementById("joinDate").value;
-  
-          // Validasi untuk memastikan form terisi
-          if (!employeeName || !employeePosition || !employeeDivision || !joinDate) {
-              alert("Semua field harus diisi.");
-              return;
-          }
-  
-          // Ambil tabel dan buat baris baru
-          const table = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
-          const newRow = table.insertRow();
-  
-          // Tentukan nomor urut
-          const rowCount = table.rows.length;
-  
-          // Tambahkan sel ke baris baru
-          const cellNumber = newRow.insertCell(0);
-          const cellCode = newRow.insertCell(1);
-          const cellName = newRow.insertCell(2);
-          const cellEmail = newRow.insertCell(3);
-          const cellAddress = newRow.insertCell(4);
-          const cellPosition = newRow.insertCell(5);
-          const cellActions = newRow.insertCell(6);
-  
-          // Isi sel dengan data input
-          cellNumber.innerHTML = rowCount;
-          cellCode.innerHTML = `KR${rowCount.toString().padStart(3, '0')}`; // Contoh kode otomatis
-          cellName.innerHTML = employeeName;
-          cellEmail.innerHTML = "email@karyawan.com"; // Placeholder
-          cellAddress.innerHTML = "Jl. Contoh Alamat No.1"; // Placeholder
-          cellPosition.innerHTML = employeePosition;
-          cellActions.innerHTML = `
-              <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
-                  <i class="material-symbols-rounded">edit</i>
-              </button>
-              <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
-                  <i class="material-symbols-rounded">delete</i>
-              </button>
-          `;
-  
-          // Kosongkan form
-          document.getElementById("employeeName").value = "";
-          document.getElementById("employeePosition").value = "";
-          document.getElementById("employeeDivision").value = "";
-          document.getElementById("joinDate").value = "";
-  
-          // Tutup modal setelah menyimpan
-          const modal = bootstrap.Modal.getInstance(document.getElementById("addEmployeeModal"));
-          modal.hide();
-      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const addEmployeeModal = document.getElementById("addEmployeeModal");
+    
+        // Saat tombol "Tambah Data" diklik, tambahkan animasi fade-in
+        document.querySelector('button[data-bs-target="#addEmployeeModal"]').addEventListener("click", function () {
+            addEmployeeModal.classList.add("fade-in");
+            addEmployeeModal.classList.remove("fade-out"); // Pastikan kelas fade-out dihapus
+        });
+    
+        // Event listener pada tombol Simpan di dalam modal Tambah Data
+        document.getElementById("saveEmployeeButton").addEventListener("click", function (event) {
+            event.preventDefault(); // Mencegah form submit default
+    
+            // Ambil nilai dari input form
+            const employeeName = document.getElementById("employeeName").value;
+            const employeePosition = document.getElementById("employeePosition").value;
+            const employeeDivision = document.getElementById("employeeDivision").value;
+            const joinDate = document.getElementById("joinDate").value;
+    
+            // Validasi untuk memastikan semua field terisi
+            if (!employeeName || !employeePosition || !employeeDivision || !joinDate) {
+                alert("Semua field harus diisi.");
+                return;
+            }
+    
+            // Ambil tabel dan buat baris baru
+            const table = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
+            const newRow = table.insertRow();
+    
+            // Tentukan nomor urut
+            const rowCount = table.rows.length;
+    
+            // Tambahkan sel ke baris baru
+            const cellNumber = newRow.insertCell(0);
+            const cellCode = newRow.insertCell(1);
+            const cellName = newRow.insertCell(2);
+            const cellEmail = newRow.insertCell(3);
+            const cellAddress = newRow.insertCell(4);
+            const cellPosition = newRow.insertCell(5);
+            const cellActions = newRow.insertCell(6);
+    
+            // Isi sel dengan data input
+            cellNumber.innerHTML = rowCount;
+            cellCode.innerHTML = `KR${rowCount.toString().padStart(3, '0')}`; // Contoh kode otomatis
+            cellName.innerHTML = employeeName;
+            cellEmail.innerHTML = "email@karyawan.com"; // Placeholder
+            cellAddress.innerHTML = "Jl. Contoh Alamat No.1"; // Placeholder
+            cellPosition.innerHTML = employeePosition;
+            cellActions.innerHTML = `
+                <button class="btn btn-sm btn-info text-white" title="Edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal">
+                    <i class="material-symbols-rounded">edit</i>
+                </button>
+                <button class="btn btn-sm btn-danger text-white" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">
+                    <i class="material-symbols-rounded">delete</i>
+                </button>
+            `;
+    
+            // Kosongkan form
+            document.getElementById("employeeName").value = "";
+            document.getElementById("employeePosition").value = "";
+            document.getElementById("employeeDivision").value = "";
+            document.getElementById("joinDate").value = "";
+    
+            // Tutup modal setelah menyimpan dengan animasi fade-out
+            addEmployeeModal.classList.add("fade-out");
+            setTimeout(() => {
+                bootstrap.Modal.getInstance(addEmployeeModal).hide();
+                addEmployeeModal.classList.remove("fade-out"); // Hapus kelas fade-out setelah modal tertutup
+            }, 300);
+        });
+    });
+    
   </script>
   <script>
     // Script untuk menangani Edit Data Karyawan
